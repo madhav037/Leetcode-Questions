@@ -1,0 +1,56 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+
+int main() {
+    int numsSize, target, returnSize[2];
+    printf("enter array size");
+    scanf("%d", &numsSize);
+
+    int nums[numsSize];
+    int* ans[2];
+
+    for (int i = 0; i < numsSize; i++)
+    {
+        printf("\nenter array %d = ", i);
+        scanf("%d",&nums[i]);
+    }
+
+    printf("\nenter target : ");
+    scanf("%d", &target);
+    
+    *ans = twoSum(nums, numsSize, target, returnSize);
+    printf("\n%d", *ans);
+}
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+        int *retarr = malloc(2 * sizeof(int));
+        retarr[0] = 1;
+        retarr[1] = 1;
+            int count=0, an;
+
+            for (int i = 0; i < numsSize; i++)
+            {
+                for (int j = 0; j < numsSize; j++)
+                {
+                    if (nums[i] + nums[j] == target)
+                    {
+                        count = 1;
+                        *returnSize = 2;
+                        retarr[0] = i;
+                        retarr[1] = j;
+                        return retarr;
+                    }
+                    if (count == 1)
+                    {
+                        break;
+                    }
+                    
+                }
+                
+            }
+            *returnSize = 0;
+            return NULL;
+}
